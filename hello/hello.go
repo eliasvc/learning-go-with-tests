@@ -2,12 +2,21 @@ package main
 
 import "fmt"
 
-func HelloWorld(name string) string {
+const spanish = "Spanish"
+const englishHelloPrefix = "Hello, "
+const spanishHelloPrefix = "Hola, "
+
+func HelloWorld(name string, language string) string {
 	if name == "" {
-		return "Hello, world!"
+		name = "World"
 	}
-	return fmt.Sprintf("Hello, %s!", name)
+
+	if language == "Spanish" {
+		return spanishHelloPrefix + name
+	}
+	return englishHelloPrefix + name
 }
+
 func main() {
-	fmt.Println(HelloWorld("Chris"))
+	fmt.Println(HelloWorld("Chris", ""))
 }

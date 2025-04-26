@@ -4,22 +4,28 @@ import "testing"
 
 func TestHelloWorld(t *testing.T) {
 	t.Run("say hello to people", func(t *testing.T) {
-		got := HelloWorld("Elias")
-		want := "Hello, Elias!"
+		got := HelloWorld("Elias", "")
+		want := "Hello, Elias"
 
 		assertCorrectMessage(t, got, want)
 	})
 
-	t.Run("empty string results in 'world!'", func(t *testing.T) {
-		got := HelloWorld("")
-		want := "Hello, world!"
+	t.Run("empty string results in 'World'", func(t *testing.T) {
+		got := HelloWorld("", "")
+		want := "Hello, World"
 
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("in Spanish", func(t *testing.T) {
+		got := HelloWorld("Elias", "Spanish")
+		want := "Hola, Elias"
 		assertCorrectMessage(t, got, want)
 	})
 }
 
 func assertCorrectMessage(t testing.TB, got string, want string) {
-	// Let's testing know that this function is a helper so if something fails
+	// t.Helper() lets testing know that this function is a helper so if something fails
 	// the error message will point back to the line of code in the test instead
 	// of here.
 	t.Helper()
